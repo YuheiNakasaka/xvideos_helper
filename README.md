@@ -27,7 +27,7 @@ Or install it yourself as:
     adult = XvideosHelper::Client.new
     movie_data = adult.movies_of('http://www.xvideos.com') # default 35 objects
 
-    adult.movie_limit = 10
+    adult.movies_limit = 10
     movie_data = adult.movies_of('http://www.xvideos.com') # return 10 objects
 ```
 

@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["yuhei.nakasaka@gmail.com"]
   spec.description   = %q{xvideos_helper is a gem to support for adult site creater.}
   spec.summary       = %q{This gem get movie infomation from xvideo.com.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/YuheiNakasaka/xvideos_helper"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
