@@ -1,6 +1,6 @@
 # XvideosHelper
 
-TODO: Write a gem description
+XvideosHelper is a gem to support for adult site creater.This gem provides xvideo's data like movie url or movie page url for you with scraping the site easily.
 
 ## Installation
 
@@ -18,7 +18,63 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### movies_of(target_url)
+
+- Get movie data
+
+```ruby
+    require 'xvideos_helper'
+    adult = XvideosHelper::Client.new
+    movie_data = adult.movies_of('http://www.xvideos.com') # default 35 objects
+
+    adult.movie_limit = 10
+    movie_data = adult.movies_of('http://www.xvideos.com') # return 10 objects
+```
+
+- return
+
+```ruby
+    {
+      0 => {
+        "movie_page_url"=> "http://jp.xvideos.com/video2017657/0/jp_kyoko_ayana_qc05-02_by_zeus4096_asian_cumshots_asian_swallow_japanese_chinese",
+        "movie_thumnail_url"=> "http://img100.xvideos.com/videos/thumbs/46/a0/69/46a069b72731e3c22ddf917d9fb1cbca/46a069b72731e3c22ddf917d9fb1cbca.4.jpg",
+        "description"=>"Jp Kyoko Ayana Qc05-02 By Zeus4096 asian  ...",
+        "duration"=>"(19min)",
+        "movie_quality"=>"Pornquality:98%"
+      },
+      1 => {
+        ...
+      }
+    }
+```
+
+### tag_data_lists
+
+- Get all tags data
+
+```ruby
+    require 'xvideos_helper'
+    sexy = XvideosHelper::Client.new
+    tags_data = sexy.tag_data_lists # default 1997 objects
+
+    sexy.tags_limit = 10
+    tags_data = sexy.tag_data_lists # return 10 objects
+```
+
+- return
+
+```ruby
+    {
+      0 => {
+        tag_name => 'sex'
+        tag_url => 'http://jp.xvideos.com/tags/sex'
+        tag_count => 320165
+      },
+      1 => {
+        ...
+      },
+    }
+```
 
 ## Contributing
 

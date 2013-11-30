@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = XvideosHelper::VERSION
   spec.authors       = ["YuheiNakasaka"]
   spec.email         = ["yuhei.nakasaka@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{xvideos_helper is a gem to support for adult site creater.}
+  spec.summary       = %q{This gem get movie infomation from xvideo.com.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

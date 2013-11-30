@@ -1,5 +1,5 @@
 require "xvideos_helper/version"
+require "xvideos_helper/client"
 
 module XvideosHelper
-  # Your code goes here...
 end
