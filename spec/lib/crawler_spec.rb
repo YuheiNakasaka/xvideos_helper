@@ -7,6 +7,7 @@ describe "XvideosHelper::Crawler" do
       lists = @xh.get_data_from("http://jp.xvideos.com/",'movie')
       lists.count.should > 0
       lists.each do |key,list|
+        list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
         list["movie_page_url"].should match(/^http:\/\/.+/)
         list["movie_thumnail_url"].should match(/^http:\/\/.+/)
         list["description"].should_not be_nil
@@ -21,6 +22,7 @@ describe "XvideosHelper::Crawler" do
       lists = @xh.get_data_from("http://jp.xvideos.com/",'movie')
       lists.count.should == 0
       lists.each do |key,list|
+        list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
         list["movie_page_url"].should match(/^http:\/\/.+/)
         list["movie_thumnail_url"].should match(/^http:\/\/.+/)
         list["description"].should_not be_nil
@@ -35,6 +37,7 @@ describe "XvideosHelper::Crawler" do
       lists = @xh.get_data_from("http://jp.xvideos.com/",'movie')
       lists.count.should == 1
       lists.each do |key,list|
+        list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
         list["movie_page_url"].should match(/^http:\/\/.+/)
         list["movie_thumnail_url"].should match(/^http:\/\/.+/)
         list["description"].should_not be_nil

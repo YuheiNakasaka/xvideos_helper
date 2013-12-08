@@ -7,6 +7,7 @@ module XvideosHelper
     attr_accessor :movies_limit,:tags_limit
     def initialize
       @domain ||= Env::XVIDES_URL_JP
+      @iframe_url ||= Env::XVIDES_IFRAME_URL
       @movies_limit ||= -1
       @tags_limit ||= -1
     end
@@ -57,6 +58,9 @@ private
             parsed_data[index]['movie_thumnail_url'] = (elm.children[0].content.match(/src="(.+?)"/))[1]
             parsed_data[index]['description'] = (elm.children[0].content.match(/<p><a href=".+">(.+)<\/a><\/p>/))[1]
           end
+
+          # iframe url
+          parsed_data[index]['movie_url'] = @iframe_url + (parsed_data[index]['movie_page_url'].match(/\/video(\d+)\/.*/))[1]
 
           # description
           post.search('p/a').each do |a|
