@@ -6,6 +6,7 @@ XvideosHelper is a gem to support for adult site creater.This gem provides xvide
 
 Add this line to your application's Gemfile:
 
+    gem 'nokogiri'
     gem 'xvideos_helper'
 
 And then execute:
