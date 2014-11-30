@@ -10,6 +10,7 @@ describe "XvideosHelper::Client" do
         list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
         list["movie_page_url"].should match(/^http:\/\/.+/)
         list["movie_thumnail_url"].should match(/^http:\/\/.+/)
+        list["movie_id"].should_not be_nil
         list["description"].should_not be_nil
         list["duration"].should_not be_nil
         list["movie_quality"].should_not be_nil
@@ -50,6 +51,7 @@ describe "XvideosHelper::Client" do
         list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
         list["movie_page_url"].should match(/^http:\/\/.+/)
         list["movie_thumnail_url"].should match(/^http:\/\/.+/)
+        list["movie_id"].should_not be_nil
         list["description"].should_not be_nil
         list["duration"].should_not be_nil
         list["movie_quality"].should_not be_nil
@@ -65,6 +67,7 @@ describe "XvideosHelper::Client" do
         list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
         list["movie_page_url"].should match(/^http:\/\/.+/)
         list["movie_thumnail_url"].should match(/^http:\/\/.+/)
+        list["movie_id"].should_not be_nil
         list["description"].should_not be_nil
         list["duration"].should_not be_nil
         list["movie_quality"].should_not be_nil
