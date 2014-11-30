@@ -59,6 +59,9 @@ private
             parsed_data[index]['description'] = (elm.children[0].content.match(/<p><a href=".+">(.+)<\/a><\/p>/))[1]
           end
 
+          # movie_id
+          parsed_data[index]['movie_id'] = parsed_data[index]['movie_page_url'].match(/\/video(\d+)\/.*/)[1]
+
           # iframe url
           parsed_data[index]['movie_url'] = @iframe_url + (parsed_data[index]['movie_page_url'].match(/\/video(\d+)\/.*/))[1]
 
