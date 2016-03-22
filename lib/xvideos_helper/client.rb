@@ -7,7 +7,7 @@ module XvideosHelper
     attr_accessor :domain, :tag_url
     def initialize
       @crawler = XvideosHelper::Crawler.new
-      @domain ||= Env::XVIDES_URL_JP
+      @domain ||= Env::XVIDES_URL_WWW
       @tag_url ||= Env::XVIDES_TAG_URL
     end
 

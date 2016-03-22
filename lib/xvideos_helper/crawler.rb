@@ -6,7 +6,7 @@ module XvideosHelper
   class Crawler
     attr_accessor :movies_limit,:tags_limit
     def initialize
-      @domain ||= Env::XVIDES_URL_JP
+      @domain ||= Env::XVIDES_URL_WWW
       @iframe_url ||= Env::XVIDES_IFRAME_URL
       @movies_limit ||= -1
       @tags_limit ||= -1
@@ -41,7 +41,7 @@ private
       parsed_data = {}
       index       = 0
 
-      data.xpath('//div[@class="thumbBlock"]/div[@class="thumbInside"]').each do |post|
+      data.search(".thumb-block .thumb-inside").each do |post|
         begin
           # limit
           break if @movies_limit == index
@@ -56,7 +56,6 @@ private
           post.search('script').each do |elm|
             parsed_data[index]['movie_page_url'] = @domain + (elm.children[0].content.match(/href="(.+?)">/))[1]
             parsed_data[index]['movie_thumnail_url'] = (elm.children[0].content.match(/src="(.+?)"/))[1]
-            parsed_data[index]['description'] = (elm.children[0].content.match(/<p><a href=".+">(.+)<\/a><\/p>/))[1]
           end
 
           # movie_id
@@ -66,6 +65,7 @@ private
           parsed_data[index]['movie_url'] = @iframe_url + (parsed_data[index]['movie_page_url'].match(/\/video(\d+)\/.*/))[1]
 
           # description
+          parsed_data[index]['description'] = ''
           post.search('p/a').each do |a|
             parsed_data[index]['description'] = a.inner_text
           end

@@ -1,12 +1,21 @@
 # XvideosHelper
 
-XvideosHelper is a gem to support for adult site creater.This gem provides xvideo's data like movie url or movie page url for you with scraping the site easily.
+XvideosHelper is a gem to support for adult site creater.
+
+This gem provides xvideo's data like movie url or movie page url for you with scraping the site easily.
+
+So, if you use this gem in production, please cache the results.
+
+### Notice
+
+Now, there is the html difference between www.xvideos.com and **.xvideos.com.
+
+XvideosHelper only supports www.xvideos.com.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'nokogiri'
     gem 'xvideos_helper'
 
 And then execute:
@@ -35,7 +44,7 @@ Or install it yourself as:
     {
       0 => {
         "movie_url" => "http://flashservice.xvideos.com/embedframe/6243093",
-        "movie_page_url"=> "http://jp.xvideos.com/video2017657/0/jp_kyoko_ayana_qc05-02_by_zeus4096_asian_cumshots_asian_swallow_japanese_chinese",
+        "movie_page_url"=> "http://www.xvideos.com/video2017657/0/jp_kyoko_ayana_qc05-02_by_zeus4096_asian_cumshots_asian_swallow_japanese_chinese",
         "movie_thumnail_url"=> "http://img100.xvideos.com/videos/thumbs/46/a0/69/46a069b72731e3c22ddf917d9fb1cbca/46a069b72731e3c22ddf917d9fb1cbca.4.jpg",
         "movie_id"=>"9750364",
         "description"=>"Jp Kyoko Ayana Qc05-02 By Zeus4096 asian  ...",
@@ -65,7 +74,7 @@ Or install it yourself as:
     {
       0 => {
         tag_name => 'sex'
-        tag_url => 'http://jp.xvideos.com/tags/sex'
+        tag_url => 'http://www.xvideos.com/tags/sex'
         tag_count => 320165
       },
       1 => {
@@ -101,22 +110,23 @@ Or install it yourself as:
     movie_data = adult.movies_of('http://www.xvideos.com')
 ```
 
-- Get movie information from all tag pages.
+- Get movie information from 10 tag pages.
 
 ```ruby
     adult = XvideosHelper::Client.new
-    tags_data = sexy.tag_data_lists
+    adult.tags_limit = 10
+    tags_data = adult.tag_data_lists
     tag_movie_data = []
-    tags_data.each do |tag|
-      tag_movie_data << adult.movies_of("http://www.xvideos.com/tags/#{tag}")
+    tags_data.each do |k,v|
+      tag_movie_data << adult.movies_of("http://www.xvideos.com/tags/#{v["tag_name"]}")
     end
 ```
 
 - Get popular movie information.
 
 ```ruby
-    adult = XvideosHelper::Client.new
-    movie_data = adult.movies_of("http://www.xvideos.com/hits/")
+adult = XvideosHelper::Client.new
+movie_data = adult.movies_of("http://www.xvideos.com/best/")
 ```
 
 ## Contributing

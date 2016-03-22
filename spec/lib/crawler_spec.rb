@@ -4,7 +4,7 @@ describe "XvideosHelper::Crawler" do
   context 'get_data_from' do
     it 'return valid movie information' do
       @xh = XvideosHelper::Crawler.new
-      lists = @xh.get_data_from("http://jp.xvideos.com/",'movie')
+      lists = @xh.get_data_from("http://www.xvideos.com/",'movie')
       lists.count.should > 0
       lists.each do |key,list|
         list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
@@ -20,7 +20,7 @@ describe "XvideosHelper::Crawler" do
     it 'return 0 movie information' do
       @xh = XvideosHelper::Crawler.new
       @xh.movies_limit = 0
-      lists = @xh.get_data_from("http://jp.xvideos.com/",'movie')
+      lists = @xh.get_data_from("http://www.xvideos.com/",'movie')
       lists.count.should == 0
       lists.each do |key,list|
         list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
@@ -36,7 +36,7 @@ describe "XvideosHelper::Crawler" do
     it 'return 1 movie information' do
       @xh = XvideosHelper::Crawler.new
       @xh.movies_limit = 1
-      lists = @xh.get_data_from("http://jp.xvideos.com/",'movie')
+      lists = @xh.get_data_from("http://www.xvideos.com/",'movie')
       lists.count.should == 1
       lists.each do |key,list|
         list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
@@ -51,7 +51,7 @@ describe "XvideosHelper::Crawler" do
 
     it 'return valid tag lists' do
       @xh = XvideosHelper::Crawler.new
-      lists = @xh.get_data_from("http://jp.xvideos.com/tags",'taglist')
+      lists = @xh.get_data_from("http://www.xvideos.com/tags",'taglist')
       lists.count.should > 0
       lists.each do |key,list|
         list['tag_name'].should_not be_nil
@@ -63,7 +63,7 @@ describe "XvideosHelper::Crawler" do
     it 'return 0 tag list' do
       @xh = XvideosHelper::Crawler.new
       @xh.tags_limit = 0
-      lists = @xh.get_data_from("http://jp.xvideos.com/tags",'taglist')
+      lists = @xh.get_data_from("http://www.xvideos.com/tags",'taglist')
       lists.count.should == 0
       lists.each do |key,list|
         list['tag_name'].should_not be_nil
@@ -75,7 +75,7 @@ describe "XvideosHelper::Crawler" do
     it 'return 1 tag list' do
       @xh = XvideosHelper::Crawler.new
       @xh.tags_limit = 1
-      lists = @xh.get_data_from("http://jp.xvideos.com/tags",'taglist')
+      lists = @xh.get_data_from("http://www.xvideos.com/tags",'taglist')
       lists.count.should == 1
       lists.each do |key,list|
         list['tag_name'].should_not be_nil
@@ -86,17 +86,17 @@ describe "XvideosHelper::Crawler" do
 
     it 'return empty object if undifined name or the other objects' do
       @xh = XvideosHelper::Crawler.new
-      lists = @xh.get_data_from("http://jp.xvideos.com/",'undifined_name')
+      lists = @xh.get_data_from("http://www.xvideos.com/",'undifined_name')
       lists.should == {}
-      lists = @xh.get_data_from("http://jp.xvideos.com/",{})
+      lists = @xh.get_data_from("http://www.xvideos.com/",{})
       lists.should == {}
-      lists = @xh.get_data_from("http://jp.xvideos.com/",[])
+      lists = @xh.get_data_from("http://www.xvideos.com/",[])
       lists.should == {}
     end
 
     it 'raises error if invalid url' do
       @xh = XvideosHelper::Crawler.new
-      lambda {@xh.movies_of("invalid://jp.xvideos.com/",'movie')}.should raise_error
+      lambda {@xh.movies_of("invalid://www.xvideos.com/",'movie')}.should raise_error
     end
   end
 

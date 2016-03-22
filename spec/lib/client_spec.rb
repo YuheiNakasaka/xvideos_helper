@@ -1,10 +1,11 @@
+require 'pry'
 require 'spec_helper'
 
 describe "XvideosHelper::Client" do
   context 'movies_of' do
     it 'return valid values' do
       @xh = XvideosHelper::Client.new
-      lists = @xh.movies_of("http://jp.xvideos.com/")
+      lists = @xh.movies_of("http://www.xvideos.com/")
       lists.count.should > 0
       lists.each do |key,list|
         list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
@@ -19,7 +20,7 @@ describe "XvideosHelper::Client" do
 
     it 'raises error if invalid url' do
       @xh = XvideosHelper::Client.new
-      lambda {@xh.movies_of("invalid://jp.xvideos.com/")}.should raise_error
+      lambda {@xh.movies_of("invalid://www.xvideos.com/")}.should raise_error
     end
   end
 
@@ -45,7 +46,7 @@ describe "XvideosHelper::Client" do
     it 'changes limit to 1' do
       @xh = XvideosHelper::Client.new
       @xh.movies_limit = 1
-      lists = @xh.movies_of("http://jp.xvideos.com/")
+      lists = @xh.movies_of("http://www.xvideos.com/")
       lists.count.should == 1
       lists.each do |key,list|
         list["movie_url"].should match(/^http:\/\/.+\/\d+$/)
@@ -61,7 +62,7 @@ describe "XvideosHelper::Client" do
     it 'changes limit to 0' do
       @xh = XvideosHelper::Client.new
       @xh.movies_limit = 0
-      lists = @xh.movies_of("http://jp.xvideos.com/")
+      lists = @xh.movies_of("http://www.xvideos.com/")
       lists.count.should == 0
       lists.each do |key,list|
         list["movie_url"].should match(/^http:\/\/.+\/\d+$/)

@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["YuheiNakasaka"]
   spec.email         = ["yuhei.nakasaka@gmail.com"]
   spec.description   = %q{xvideos_helper is a gem to support for adult site creater.}
-  spec.summary       = %q{This gem get movie infomation from xvideo.com.}
+  spec.summary       = %q{This gem gets movie infomation from www.xvideos.com.}
   spec.homepage      = "https://github.com/YuheiNakasaka/xvideos_helper"
   spec.license       = "MIT"
 
@@ -18,8 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "nokogiri"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
-  spec.add_development_dependency "nokogiri"
+  spec.add_development_dependency "pry"
 end
